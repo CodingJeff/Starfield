@@ -1,68 +1,70 @@
-NormalParticle[] aBunch = new NormalParticle[500];
+Particle[] aBunch = new Particle[1200];
 void setup()
 {
-size(500,500);
-for(int i = 0; i < aBunch.length; i++)
-{
-aBunch[i] = new NormalParticle();
-}
-//aBunch[0] = new OddballParticle();
+  size(500, 500);
+  for (int i = 0; i < aBunch.length; i++)
+  {
+    aBunch[i] = new NormalParticle();
+  }
+  aBunch[0] = new OddballParticle();
 }
 
 void draw()
 {
-	background(0);
-for(int i =0; i< aBunch.length; i++)
-aBunch[i].show();
-aBunch[i].move();
+  background(0);
+  for (int i =0; i< aBunch.length; i++)
+  {
+    aBunch[i].show();
+    aBunch[i].move();
+  }
 }
 class NormalParticle implements Particle
 {
-	double myX, my, myDirection;
+  double myX, myY, myDirection;
   int mySpeed;
   int myColor;
   NormalParticle()
   {
     myX =250;
     myY =250;
-    mySpeed=Math.random()*10;
+    mySpeed=(int)(Math.random()*10);
     myDirection=Math.random()*2*Math.PI;
-    myColor=(int)(Math.random*256)+1;
-}
-public void move()
-{
-  myX=myX+mySpeed * Math.cos(myDir);
-  myY=myY+mySpeed *Math.sin(myDir);
-}
-public void move()
-{
-  fill(myColor);
-  ellipse((float)myX, (float)myY, 30,30);
+    myColor=(255);
+  }
+  public void move()
+  {
+    myX=myX+mySpeed * Math.cos(myDirection);
+    myY=myY+mySpeed *Math.sin(myDirection);
+  }
+  public void show()
+  {
+    fill(myColor,0,0);
+    ellipse((float)myX, (float)myY, 15, 15);
+  }
 }
 interface Particle
 {
-	public void show();
+  public void show();
   public void move();
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle
 {
-	int myX, myY;
-OddballParticle()
-{
-  myX =250;
-  myY =50;
-}
-public void show()
-{
-  rect(myX,myY, 30, 30);
-}
-public void move()
-{
-myX= myX +(int)(Math.random()*3)-1;
-myY = myY +(int)(Math.random()*3)-1;
-}
-//class JumboParticle //uses inheritance
+  int myX, myY;
+  OddballParticle()
+  {
+    myX =250;
+    myY =50;
+  }
+  public void show()
+  {
+    rect(myX, myY, 30, 30);
+  }
+  public void move()
+  {
+    myX= myX +(int)(Math.random()*3)-1;
+    myY = myY +(int)(Math.random()*3)-1;
+  }
+  //class JumboParticle //uses inheritance
 
-	//your code here
-}
+  //your code here
 }

@@ -7,6 +7,7 @@ void setup()
     aBunch[i] = new NormalParticle();
   }
   aBunch[0] = new OddballParticle();
+  aBunch[1] = new JumboParticle();
 }
 
 void draw()
@@ -38,7 +39,7 @@ class NormalParticle implements Particle
   }
   public void show()
   {
-    fill(myColor,0,0);
+    fill(myColor, 0, 0);
     ellipse((float)myX, (float)myY, 15, 15);
   }
 }
@@ -64,7 +65,12 @@ class OddballParticle implements Particle
     myX= myX +(int)(Math.random()*3)-1;
     myY = myY +(int)(Math.random()*3)-1;
   }
-  //class JumboParticle //uses inheritance
-
-  //your code here
+}
+class JumboParticle extends NormalParticle
+{
+  public void show()
+  {
+    fill(100, 100, 100);
+    ellipse((float)myX, (float)myY, 150, 150);
+  }
 }
